@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inversion - E-Ticket Booking</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">INVERSION</div>
+        <nav>
+            <ul>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#artists">Artists</a></li>
+                <li><a href="#tickets">Tickets</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="nav-right">
+            <button id="theme-toggle">🌙</button>
+            <div class="profile">
+                <img src="profile.jpg" alt="Profile">
+                <span>Username</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h2>EVENTIME FEST VOL.1</h2>
+            <p>August 28 / 29 / 30</p>
+            <div id="countdown"></div>
+            <a href="#tickets" class="btn">Buy Tickets</a>
+        </div>
+    </section>
+
+    <!-- Explore Section -->
+    <section id="explore">
+        <h2>Explore More</h2>
+        <div class="explore-options">
+            <button class="explore-btn" data-filter="all">All</button>
+            <button class="explore-btn" data-filter="concerts">Concerts</button>
+            <button class="explore-btn" data-filter="events">Events</button>
+            <button class="explore-btn" data-filter="shows">Shows</button>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events">
+        <h2>Upcoming Events</h2>
+        <div class="event-grid">
+
+            <div class="event-card" data-category="concerts">
+                <img src="event1.jpg" alt="Event 1">
+                <h3>Echoes of Euphoria (DE)</h3>
+                <p>Serenade Square - 17/08/2023</p>
+                <a href="#" class="btn">Buy Tickets</a>
+            </div>
+
+            <div class="event-card" data-category="events">
+                <img src="event2.jpg" alt="Event 2">
+                <h3>Black Velvet Riot (BE)</h3>
+                <p>Vortex Lounge - 19/09/2023</p>
+                <a href="#" class="btn">Buy Tickets</a>
+            </div>
+
+            <div class="event-card" data-category="shows">
+                <img src="event3.jpg" alt="Event 3">
+                <h3>Neon Night Spectacle</h3>
+                <p>Grand Arena - 25/09/2023</p>
+                <a href="#" class="btn">Buy Tickets</a>
+            </div>
+
+            <div class="event-card" data-category="concerts">
+                <img src="event4.jpg" alt="Event 4">
+                <h3>Rock Fusion Night</h3>
+                <p>Open Air Stage - 01/10/2023</p>
+                <a href="#" class="btn">Buy Tickets</a>
+            </div>
+
+            <div class="event-card" data-category="events">
+                <img src="event5.jpg" alt="Event 5">
+                <h3>Tech Summit 2023</h3>
+                <p>Convention Center - 05/10/2023</p>
+                <a href="#" class="btn">Buy Tickets</a>
+            </div>
+
+            <div class="event-card" data-category="shows">
+                <img src="event6.jpg" alt="Event 6">
+                <h3>Comedy Special</h3>
+                <p>Laugh Arena - 10/10/2023</p>
+                <a href="#" class="btn">Buy Tickets</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Inversion. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
+
+<script>
+// Toggle Mobile Menu
+function toggleMenu() {
+    document.getElementById("nav-links").classList.toggle("active");
+}
+
+// Dark/Light Mode Toggle
+const themeToggle = document.getElementById("theme-toggle");
+themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("light-mode");
+    themeToggle.textContent = document.body.classList.contains("light-mode") ? "☀️" : "🌙";
+});
+
+// Smooth Scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute("href")).scrollIntoView({ behavior: "smooth" });
+    });
+});
+
+// Event Search
+document.getElementById("search-bar").addEventListener("input", function() {
+    let filter = this.value.toLowerCase();
+    let eventCards = document.querySelectorAll(".event-card");
+
+    eventCards.forEach(card => {
+        let title = card.querySelector("h3").textContent.toLowerCase();
+        card.style.display = title.includes(filter) ? "block" : "none";
+    });
+});
+
+// Explore More Filter System
+document.querySelectorAll(".explore-btn").forEach(button => {
+    button.addEventListener("click", function () {
+        let filter = this.getAttribute("data-filter");
+        let eventCards = document.querySelectorAll(".event-card");
+
+        eventCards.forEach(card => {
+            if (filter === "all" || card.getAttribute("data-category") === filter) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+        });
+
+        // Highlight the selected button
+        document.querySelectorAll(".explore-btn").forEach(btn => btn.classList.remove("active"));
+        this.classList.add("active");
+    });
+});
+
+// Ticket Modal
+function openModal(eventName) {
+    document.getElementById("modal-title").textContent = eventName;
+    document.getElementById("ticket-modal").style.display = "flex";
+}
+
+function closeModal() {
+    document.getElementById("ticket-modal").style.display = "none";
+}
+
+// Back to Top Button
+const backToTop = document.createElement("button");
+backToTop.id = "back-to-top";
+backToTop.innerHTML = "⬆";
+document.body.appendChild(backToTop);
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 200) {
+        backToTop.style.display = "block";
+    } else {
+        backToTop.style.display = "none";
+    }
+});
+
+backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+</script>
