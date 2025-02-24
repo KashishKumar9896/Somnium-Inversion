@@ -1,0 +1,489 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+/* Hide Scrollbar */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0a0a0a;
+    color: #fff;
+    overflow-x: hidden;
+    transition: 0.3s ease-in-out;
+}
+
+/* Light Mode */
+body.light-mode {
+    background-color: #ffffff;
+    color: #333;
+}
+
+body.light-mode header,
+body.light-mode .event-card,
+body.light-mode .explore-card {
+    background: #f5f5f5;
+}
+
+body.light-mode .btn {
+    background: #ff9800;
+}
+
+body.light-mode .btn:hover {
+    background: #e68900;
+}
+
+body.light-mode .explore-heading,
+body.light-mode .event-heading {
+    color: #ff9800;
+}
+
+body.light-mode nav ul li a {
+    color: #333;
+}
+
+body.light-mode nav ul li a:hover {
+    color: #ff9800;
+}
+
+
+/* Header & Navbar */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10, 10, 10, 0.9);
+    padding: 20px 50px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: 0.3s;
+}
+
+/* Light Mode Navbar */
+body.light-mode header {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* Logo */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #b47cff;
+}
+
+/* Navbar */
+nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #b47cff;
+}
+
+/* Profile & Theme Toggle */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Theme Toggle Button - Fixed on Left Side */
+#theme-toggle {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #b47cff;
+    border: none;
+    color: #fff;
+    font-size: 22px;
+    padding: 10px 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+body.light-mode #theme-toggle {
+    color: #ff9800;
+}
+
+
+#theme-toggle:hover {
+    background: #8c5cb9;
+}
+
+/* Profile Section */
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.profile img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid #b47cff;
+}
+
+.profile span {
+    font-size: 16px;
+    color: #fff;
+}
+
+/* Hero Section */
+#hero {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    background: url('hero-bg.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Dark Overlay */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.6);
+}
+
+/* Hero Content */
+.hero-content {
+    position: relative;
+    z-index: 1;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.hero-content h2 {
+    font-size: 50px;
+    color: #b47cff;
+    font-weight: bold;
+}
+
+body.light-mode .hero-content h2 {
+    color: #ff9800;
+}
+
+.hero-content p {
+    font-size: 22px;
+    margin-top: 10px;
+    color: #ddd;
+}
+
+/* Button */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: #b47cff;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #8c5cb9;
+}
+
+/* Explore More Section */
+#explore {
+    text-align: center;
+    padding: 50px 20px;
+    background: #0d0d0d; /* Darker Background */
+}
+
+.explore-heading {
+    font-size: 32px;
+    color: #b47cff;
+    margin-bottom: 20px;
+}
+
+body.light-mode .explore-heading {
+    color: #ff9800;
+}
+
+.explore-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.explore-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background: transparent;
+    color: #b47cff;
+    border: 2px solid #b47cff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.explore-btn:hover, .explore-btn.active {
+    background: #b47cff;
+    color: #fff;
+}
+
+body.light-mode .explore-btn {
+    color: #ff9800;
+    border: 2px solid #ff9800;
+}
+
+body.light-mode .explore-btn:hover, 
+body.light-mode .explore-btn.active {
+    background: #ff9800;
+    color: #fff;
+}
+
+/* Explore More Cards */
+.explore-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.explore-card {
+    background: linear-gradient(135deg, #1a1a1a, #2a1a3d);
+    padding: 25px;
+    width: 320px;
+    border-radius: 15px;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0px 5px 15px rgba(180, 124, 255, 0.2);
+}
+
+.explore-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.explore-card h3 {
+    color: #b47cff;
+    font-size: 22px;
+    margin-top: 15px;
+}
+
+body.light-mode .explore-card h3 {
+    color: #ff9800;
+}
+
+.explore-card p {
+    font-size: 16px;
+    color: #ddd;
+    margin-top: 8px;
+}
+
+.explore-card .btn {
+    margin-top: 15px;
+}
+
+/* Hover Effect */
+.explore-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(180, 124, 255, 0.3);
+}
+
+
+/* Search Bar */
+#search {
+    text-align: center;
+    margin: 40px 0;
+}
+
+#search-bar {
+    padding: 12px;
+    width: 60%;
+    max-width: 500px;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    text-align: center;
+}
+
+#events {
+    text-align: center;
+    padding: 60px 20px;
+    background: #0a0a0a;
+}
+
+.event-heading {
+    font-size: 32px;
+    color: #b47cff;
+    margin-bottom: 25px;
+}
+
+body.light-mode .event-heading {
+    color: #ff9800;
+}
+
+/* Events Grid */
+.event-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 40px;
+}
+
+.event-card {
+    background: #1a1a1a;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 12px;
+    width: 280px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.event-card img {
+    width: 100%;
+    height: 180px; /* Fixed height for uniformity */
+    object-fit: cover; /* Ensure images are cropped to fit */
+    border-radius: 12px;
+}
+
+.event-card:hover {
+    transform: scale(1.05);
+}
+
+body.light-mode .event-card {
+    background: #f5f5f5;
+}
+
+body.light-mode .event-card h3 {
+    color: #ff9800;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #1a1a1a;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    text-align: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    padding: 20px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Back to Top Button */
+#back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #b47cff;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 50%;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    display: none;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #1a1a1a;
+    margin-top: 40px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .profile span {
+        display: none;
+    }
+
+    #search-bar {
+        width: 80%;
+    }
+
+    .hero-content h2 {
+        font-size: 32px;
+    }
+
+    #theme-toggle {
+        left: 10px; /* Adjust positioning for smaller screens */
+    }
+
+    .explore-grid, .event-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+}
